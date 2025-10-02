@@ -1,0 +1,26 @@
+#include <cstdio>
+#include <cstdint>
+
+bool isPrime(uint64_t n) {
+    if (n < 2) return false;
+    if (n % 2 == 0) return n == 2;
+    for (uint64_t i = 3; i * i <= n; i += 2) {
+        if (n % i == 0) return false;
+    }
+    return true;
+}
+
+int main() {
+    uint64_t x;
+    if (scanf("%llu", (unsigned long long*)&x) != 1) {
+        printf("false\n");
+        return 0;
+    }
+
+    if (isPrime(x))
+        printf("true\n");
+    else
+        printf("false\n");
+
+    return 0;
+}
