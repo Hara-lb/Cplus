@@ -1,0 +1,23 @@
+#include <cstdio>
+#include <cstdint>
+
+bool isPrime(uint64_t n) {
+    if (n < 2) return false;
+    if (n % 2 == 0) return n == 2;
+    for (uint64_t i = 3; i * i <= n; i += 2) {
+        if (n % i == 0) return false;
+    }
+    return true;
+}
+
+int main() {
+    uint64_t tests[] = {0, 1, 2, 3, 4, 17, 18, 19, 20, 97, 100, 4294967291ULL};
+    int size = sizeof(tests) / sizeof(tests[0]);
+
+    for (int i = 0; i < size; i++) {
+        uint64_t x = tests[i];
+        printf("%llu -> %s\n", (unsigned long long)x, isPrime(x) ? "true" : "false");
+    }
+
+    return 0;
+}
